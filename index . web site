@@ -1,1 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Varshith — Sports & Achievements</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#06b6d4;--muted:#9aa6b2;--glass: rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6eef3;background:linear-gradient(180deg,#031021 0%, #071427 60%);-webkit-font-smoothing:antialiased}
+    .container{max-width:960px;margin:36px auto;padding:20px}
+    header{display:flex;gap:16px;align-items:center}
+    .avatar{width:110px;height:110px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:#051422;font-weight:700;font-size:36px;box-shadow:0 8px 30px rgba(6,182,212,0.12)}
+    h1{margin:0;font-size:28px}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px;margin-top:24px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}.avatar{width:84px;height:84px;font-size:28px}}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;color:#e9fbff;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+    .achievements{display:flex;flex-direction:column;gap:12px}
+    .ach-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:var(--glass);backdrop-filter: blur(6px)}
+    .badge{min-width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#0ea5a4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .ach-item h3{margin:0;font-size:16px}
+    .ach-item p{margin:0;color:var(--muted);font-size:13px}
+
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{flex:1;padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center}
+    .stat strong{display:block;font-size:20px}
+    .buttons{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 12px;border-radius:10px;background:transparent;color:var(--accent);border:1px solid rgba(6,182,212,0.16);cursor:pointer}
+    .btn.primary{background:var(--accent);color:#052028;border:0}
+
+    .right-col .card{position:sticky;top:20px}
+    .profile-meta{display:flex;flex-direction:column;gap:8px}
+    .meta-row{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+
+    .timeline{margin-top:14px}
+    .timeline-item{padding:10px;border-radius:8px;background:rgba(0,0,0,0.18);margin-bottom:10px}
+
+    footer{margin-top:30px;color:var(--muted);text-align:center;font-size:13px}
+
+    /* small interaction */
+    .pulse{animation:pulse 2.2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(6,182,212,0.12)}50%{box-shadow:0 0 0 12px rgba(6,182,212,0)}100%{box-shadow:0 0 0 0 rgba(6,182,212,0)}}
+
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    @media (max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .photo{height:78px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.08));display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted)}
+
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="avatar">V</div>
+      <div>
+        <h1>Varshith</h1>
+        <p class="lead">Athlete • Kabaddi • Kho-Kho • Volleyball champion • Runner — proud of my achievements</p>
+        <div class="buttons" style="margin-top:10px">
+          <button class="btn" id="downloadBtn">Download Profile</button>
+          <button class="btn primary" id="contactBtn">Contact</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="card">
+          <h2 style="margin-top:0">Achievements</h2>
+          <div class="achievements">
+            <div class="ach-item">
+              <div class="badge">🏆</div>
+              <div>
+                <h3>Volleyball — 1st Prize</h3>
+                <p>Won 1st prize in volleyball at local/mandal level events.</p>
+              </div>
+            </div>
+            <div class="ach-item">
+              <div class="badge">🤼</div>
+              <div>
+                <h3>Kabaddi — Team Champion</h3>
+                <p>Active kabaddi player with multiple team appearances and wins.</p>
+              </div>
+            </div>
+            <div class="ach-item">
+              <div class="badge">🏃</div>
+              <div>
+                <h3>Running — 3rd Prize</h3>
+                <p>Secured 3rd place in district running event.</p>
+              </div>
+            </div>
+            <div class="ach-item">
+              <div class="badge">🥇</div>
+              <div>
+                <h3>Kho-Kho — Competitor</h3>
+                <p>Regular player of kho-kho in school and local tournaments.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong id="ageStat">16</strong>
+              <span class="muted">Age (editable)</span>
+            </div>
+            <div class="stat">
+              <strong id="eventsStat">12</strong>
+              <span class="muted">Events played</span>
+            </div>
+            <div class="stat">
+              <strong id="winsStat">7</strong>
+              <span class="muted">Wins</span>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <label for="bioEdit" style="color:var(--muted);font-size:13px">Short bio (click to edit)</label>
+            <div id="bioEdit" contenteditable="true" style="margin-top:8px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02);min-height:68px">Hi — I'm Varshith, a passionate sportsperson who loves team games and running. I train regularly and enjoy competing.</div>
+            <div style="margin-top:8px;text-align:right"><button class="btn" id="saveBio">Save Bio</button></div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:18px">
+          <h2 style="margin-top:0">Gallery</h2>
+          <div class="gallery" id="gallery">
+            <div class="photo">Photo 1</div>
+            <div class="photo">Photo 2</div>
+            <div class="photo">Photo 3</div>
+            <div class="photo">Photo 4</div>
+            <div class="photo">Photo 5</div>
+            <div class="photo">Photo 6</div>
+          </div>
+        </section>
+
+      </main>
+
+      <aside class="right-col">
+        <div class="card">
+          <div class="profile-meta">
+            <div class="meta-row"><span>Location</span><span>Koratlagudem</span></div>
+            <div class="meta-row"><span>School</span><span>—</span></div>
+            <div class="meta-row"><span>Interests</span><span>Sports, Computers</span></div>
+          </div>
+
+          <div class="timeline">
+            <h3 style="margin-bottom:8px">Timeline</h3>
+            <div class="timeline-item"><strong>2025</strong> — Volleyball 1st prize (Mandal)</div>
+            <div class="timeline-item"><strong>2024</strong> — Science fair winner</div>
+            <div class="timeline-item"><strong>2023</strong> — Running 3rd prize</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <button class="btn" id="editBtn">Edit Details</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="card" style="margin-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>Made with ❤️ for young athletes</div>
+        <div style="font-size:13px;color:var(--muted)">Tip: click the "Download Profile" to save this page as a file</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small interactive behaviors
+    const downloadBtn = document.getElementById('downloadBtn')
+    const contactBtn = document.getElementById('contactBtn')
+    const bio = document.getElementById('bioEdit')
+    const saveBio = document.getElementById('saveBio')
+
+    downloadBtn.addEventListener('click', ()=>{
+      const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'})
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'varshith_portfolio.html'
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+    })
+
+    contactBtn.addEventListener('click', ()=>{
+      alert('Add contact details to profile or share your email/phone here to enable contact.');
+    })
+
+    saveBio.addEventListener('click', ()=>{
+      saveBio.textContent = 'Saved ✓'
+      setTimeout(()=>saveBio.textContent='Save Bio',1200)
+    })
+
+    // small editable demo for stats
+    document.getElementById('ageStat').addEventListener('click', ()=>{
+      const newAge = prompt('Enter age (number)')
+      if(newAge) document.getElementById('ageStat').textContent = newAge
+    })
+    document.getElementById('eventsStat').addEventListener('click', ()=>{
+      const newV = prompt('Enter total events played')
+      if(newV) document.getElementById('eventsStat').textContent = newV
+    })
+    document.getElementById('winsStat').addEventListener('click', ()=>{
+      const newV = prompt('Enter wins count')
+      if(newV) document.getElementById('winsStat').textContent = newV
+    })
+
+    // small keyboard shortcut: press G to toggle gallery image placeholder names
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase() === 'g'){
+        document.getElementById('gallery').classList.toggle('hidden')
+      }
+    })
+  </script>
+</body>
+</html>
 
